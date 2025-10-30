@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastrar Aluno - Sistema de Gestão Universitária</title>
+    <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <div class="logo">
+                <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <rect width="40" height="40" rx="8" fill="#2563eb"/>
+                </svg>
+                <h1>Sistema de Gestão Universitária</h1>
+            </div>
+            <div class="user-info"><span>Administrador</span></div>
+        </header>
+
+        <main class="main-content">
+            <a href="../index.html" class="back-button">← Voltar ao Menu</a>
+
+            <div class="form-container">
+                <div class="form-header">
+                    <h2>Cadastrar Aluno</h2>
+                    <p>Vincule um aluno a partir de uma Pessoa Física existente</p>
+                </div>
+
+                <div id="alert" class="alert"></div>
+                <div id="successMessage" class="success-message">
+                    <h3>✓ Aluno cadastrado com sucesso!</h3>
+                    <p><strong>Matrícula Acadêmica:</strong> <span id="matricula"></span></p>
+                    <p><strong>Nome:</strong> <span id="alunoNome"></span></p>
+                    <p><strong>Curso:</strong> <span id="alunoCurso"></span></p>
+                    <p><strong>Status:</strong> ATIVO</p>
+                </div>
+
+                <form id="formCadastroAluno">
+                    <div class="form-group">
+                        <label for="cpf" class="required">CPF do Aluno</label>
+                        <input type="text" id="cpf" name="cpf" required placeholder="000.000.000-00" maxlength="14">
+                        <small style="color: #64748b;">Informe o CPF de uma Pessoa Física já cadastrada</small>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="curso" class="required">Curso</label>
+                            <select id="curso" name="curso" required>
+                                <option value="">Selecione...</option>
+                                <option value="Ciência da Computação">Ciência da Computação</option>
+                                <option value="Engenharia de Software">Engenharia de Software</option>
+                                <option value="Sistemas de Informação">Sistemas de Informação</option>
+                                <option value="Análise e Desenvolvimento de Sistemas">Análise e Desenvolvimento de Sistemas</option>
+                                <option value="Administração">Administração</option>
+                                <option value="Direito">Direito</option>
+                                <option value="Medicina">Medicina</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="turno" class="required">Turno</label>
+                            <select id="turno" name="turno" required>
+                                <option value="">Selecione...</option>
+                                <option value="Matutino">Matutino</option>
+                                <option value="Vespertino">Vespertino</option>
+                                <option value="Noturno">Noturno</option>
+                                <option value="Integral">Integral</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="dataIngresso" class="required">Data de Ingresso</label>
+                            <input type="date" id="dataIngresso" name="dataIngresso" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="formaIngresso" class="required">Forma de Ingresso</label>
+                            <select id="formaIngresso" name="formaIngresso" required>
+                                <option value="">Selecione...</option>
+                                <option value="Vestibular">Vestibular</option>
+                                <option value="ENEM">ENEM</option>
+                                <option value="Transferência">Transferência</option>
+                                <option value="Reopção">Reopção</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-actions">
+                        <button type="button" class="btn btn-outline" onclick="location.reload()">Limpar</button>
+                        <button type="submit" class="btn btn-primary">Cadastrar Aluno</button>
+                    </div>
+                </form>
+            </div>
+        </main>
+
+        <footer class="footer">
+            <p>&copy; 2025 Sistema de Gestão Universitária - Projeto Integrador Grupo 48</p>
+        </footer>
+    </div>
+
+    <script>
+        document.getElementById('cpf').addEventListener('input', function(e) {
+            let value = e.target.value.replace(/\D/g, '');
+            value = value.replace(/(\d{3})(\d)/, '$1.$2');
+            value = value.replace(/(\d{3})(\d)/, '$1.$2');
+            value = value.replace(/(\d{3})(\d{1,2})$/, '$1-$2');
+            e.target.value = value;
+        });
+
+        document.getElementById('formCadastroAluno').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const ano = new Date().getFullYear();
+            const semestre = (new Date().getMonth() + 1 <= 6) ? '1' : '2';
+            const matricula = ano + semestre + Math.floor(Math.random() * 100000).toString().padStart(5, '0');
+            document.getElementById('matricula').textContent = matricula;
+            document.getElementById('alunoNome').textContent = 'Aluno Vinculado';
+            document.getElementById('alunoCurso').textContent = document.getElementById('curso').value;
+            document.getElementById('successMessage').classList.add('show');
+            document.getElementById('formCadastroAluno').style.display = 'none';
+        });
+    </script>
+</body>
+</html>

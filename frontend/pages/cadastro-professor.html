@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastrar Professor - Sistema de Gestão Universitária</title>
+    <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <div class="logo">
+                <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <rect width="40" height="40" rx="8" fill="#2563eb"/>
+                </svg>
+                <h1>Sistema de Gestão Universitária</h1>
+            </div>
+            <div class="user-info"><span>Administrador</span></div>
+        </header>
+
+        <main class="main-content">
+            <a href="../index.html" class="back-button">← Voltar ao Menu</a>
+
+            <div class="form-container">
+                <div class="form-header">
+                    <h2>Cadastrar Professor</h2>
+                    <p>Vincule um professor a partir de uma Pessoa Física existente</p>
+                </div>
+
+                <div id="alert" class="alert"></div>
+                <div id="successMessage" class="success-message">
+                    <h3>✓ Professor cadastrado com sucesso!</h3>
+                    <p><strong>Matrícula Funcional:</strong> <span id="matricula"></span></p>
+                    <p><strong>Nome:</strong> <span id="professorNome"></span></p>
+                    <p><strong>Departamento:</strong> <span id="professorDept"></span></p>
+                </div>
+
+                <form id="formCadastroProfessor">
+                    <div class="form-group">
+                        <label for="cpf" class="required">CPF do Professor</label>
+                        <input type="text" id="cpf" name="cpf" required placeholder="000.000.000-00" maxlength="14">
+                        <small style="color: #64748b;">Informe o CPF de uma Pessoa Física já cadastrada</small>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="departamento" class="required">Departamento</label>
+                            <select id="departamento" name="departamento" required>
+                                <option value="">Selecione...</option>
+                                <option value="Ciências Exatas">Ciências Exatas</option>
+                                <option value="Ciências Humanas">Ciências Humanas</option>
+                                <option value="Ciências Biológicas">Ciências Biológicas</option>
+                                <option value="Engenharias">Engenharias</option>
+                                <option value="Tecnologia">Tecnologia</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="titulacao" class="required">Titulação</label>
+                            <select id="titulacao" name="titulacao" required>
+                                <option value="">Selecione...</option>
+                                <option value="Graduação">Graduação</option>
+                                <option value="Especialização">Especialização</option>
+                                <option value="Mestrado">Mestrado</option>
+                                <option value="Doutorado">Doutorado</option>
+                                <option value="Pós-Doutorado">Pós-Doutorado</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="regimeTrabalho" class="required">Regime de Trabalho</label>
+                            <select id="regimeTrabalho" name="regimeTrabalho" required>
+                                <option value="">Selecione...</option>
+                                <option value="20h">20 horas</option>
+                                <option value="40h">40 horas</option>
+                                <option value="Dedicação Exclusiva">Dedicação Exclusiva</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="dataAdmissao" class="required">Data de Admissão</label>
+                            <input type="date" id="dataAdmissao" name="dataAdmissao" required>
+                        </div>
+                    </div>
+
+                    <div class="form-actions">
+                        <button type="button" class="btn btn-outline" onclick="location.reload()">Limpar</button>
+                        <button type="submit" class="btn btn-primary">Cadastrar Professor</button>
+                    </div>
+                </form>
+            </div>
+        </main>
+
+        <footer class="footer">
+            <p>&copy; 2025 Sistema de Gestão Universitária - Projeto Integrador Grupo 48</p>
+        </footer>
+    </div>
+
+    <script>
+        document.getElementById('cpf').addEventListener('input', function(e) {
+            let value = e.target.value.replace(/\D/g, '');
+            value = value.replace(/(\d{3})(\d)/, '$1.$2');
+            value = value.replace(/(\d{3})(\d)/, '$1.$2');
+            value = value.replace(/(\d{3})(\d{1,2})$/, '$1-$2');
+            e.target.value = value;
+        });
+
+        document.getElementById('formCadastroProfessor').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const ano = new Date().getFullYear();
+            const matricula = 'PROF' + ano + Math.floor(Math.random() * 1000000).toString().padStart(6, '0');
+            document.getElementById('matricula').textContent = matricula;
+            document.getElementById('professorNome').textContent = 'Professor Vinculado';
+            document.getElementById('professorDept').textContent = document.getElementById('departamento').value;
+            document.getElementById('successMessage').classList.add('show');
+            document.getElementById('formCadastroProfessor').style.display = 'none';
+        });
+    </script>
+</body>
+</html>

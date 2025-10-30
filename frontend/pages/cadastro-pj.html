@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastrar Pessoa Jurídica - Sistema de Gestão Universitária</title>
+    <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <div class="logo">
+                <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <rect width="40" height="40" rx="8" fill="#2563eb"/>
+                    <path d="M20 10L10 15V25L20 30L30 25V15L20 10Z" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                <h1>Sistema de Gestão Universitária</h1>
+            </div>
+            <div class="user-info"><span>Administrador</span></div>
+        </header>
+
+        <main class="main-content">
+            <a href="../index.html" class="back-button">← Voltar ao Menu</a>
+
+            <div class="form-container">
+                <div class="form-header">
+                    <h2>Cadastrar Pessoa Jurídica</h2>
+                    <p>Preencha os dados da empresa ou organização</p>
+                </div>
+
+                <div id="alert" class="alert"></div>
+                <div id="successMessage" class="success-message">
+                    <h3>✓ Cadastro realizado com sucesso!</h3>
+                    <p><strong>ID:</strong> <span id="empresaId"></span></p>
+                    <p><strong>Razão Social:</strong> <span id="empresaRazao"></span></p>
+                    <p><strong>CNPJ:</strong> <span id="empresaCNPJ"></span></p>
+                </div>
+
+                <form id="formCadastroPJ">
+                    <div class="form-group">
+                        <label for="razaoSocial" class="required">Razão Social</label>
+                        <input type="text" id="razaoSocial" name="razaoSocial" required placeholder="Digite a razão social">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="nomeFantasia">Nome Fantasia</label>
+                        <input type="text" id="nomeFantasia" name="nomeFantasia" placeholder="Digite o nome fantasia (opcional)">
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="cnpj" class="required">CNPJ</label>
+                            <input type="text" id="cnpj" name="cnpj" required placeholder="00.000.000/0000-00" maxlength="18">
+                        </div>
+                        <div class="form-group">
+                            <label for="telefone" class="required">Telefone</label>
+                            <input type="tel" id="telefone" name="telefone" required placeholder="(00) 0000-0000" maxlength="15">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email" class="required">E-mail</label>
+                        <input type="email" id="email" name="email" required placeholder="contato@empresa.com">
+                    </div>
+
+                    <div class="form-actions">
+                        <button type="button" class="btn btn-outline" onclick="location.reload()">Limpar</button>
+                        <button type="submit" class="btn btn-primary">Cadastrar</button>
+                    </div>
+                </form>
+            </div>
+        </main>
+
+        <footer class="footer">
+            <p>&copy; 2025 Sistema de Gestão Universitária - Projeto Integrador Grupo 48</p>
+        </footer>
+    </div>
+
+    <script>
+        // Máscara CNPJ
+        document.getElementById('cnpj').addEventListener('input', function(e) {
+            let value = e.target.value.replace(/\D/g, '');
+            value = value.replace(/(\d{2})(\d)/, '$1.$2');
+            value = value.replace(/(\d{3})(\d)/, '$1.$2');
+            value = value.replace(/(\d{3})(\d)/, '$1/$2');
+            value = value.replace(/(\d{4})(\d)/, '$1-$2');
+            e.target.value = value;
+        });
+
+        document.getElementById('formCadastroPJ').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const empresaId = 'PJ-' + Math.random().toString(36).substr(2, 9).toUpperCase();
+            document.getElementById('empresaId').textContent = empresaId;
+            document.getElementById('empresaRazao').textContent = document.getElementById('razaoSocial').value;
+            document.getElementById('empresaCNPJ').textContent = document.getElementById('cnpj').value;
+            document.getElementById('successMessage').classList.add('show');
+            document.getElementById('formCadastroPJ').style.display = 'none';
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastrar Fornecedor - Sistema de Gestão Universitária</title>
+    <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <div class="logo">
+                <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <rect width="40" height="40" rx="8" fill="#2563eb"/>
+                </svg>
+                <h1>Sistema de Gestão Universitária</h1>
+            </div>
+            <div class="user-info"><span>Administrador</span></div>
+        </header>
+
+        <main class="main-content">
+            <a href="../index.html" class="back-button">← Voltar ao Menu</a>
+
+            <div class="form-container">
+                <div class="form-header">
+                    <h2>Cadastrar Fornecedor</h2>
+                    <p>Vincule um fornecedor a partir de uma Pessoa Jurídica existente</p>
+                </div>
+
+                <div id="alert" class="alert"></div>
+                <div id="successMessage" class="success-message">
+                    <h3>✓ Fornecedor cadastrado com sucesso!</h3>
+                    <p><strong>Código:</strong> <span id="codigo"></span></p>
+                    <p><strong>Empresa:</strong> <span id="fornecedorNome"></span></p>
+                    <p><strong>Ramo:</strong> <span id="fornecedorRamo"></span></p>
+                </div>
+
+                <form id="formCadastroFornecedor">
+                    <div class="form-group">
+                        <label for="cnpj" class="required">CNPJ da Empresa</label>
+                        <input type="text" id="cnpj" name="cnpj" required placeholder="00.000.000/0000-00" maxlength="18">
+                        <small style="color: #64748b;">Informe o CNPJ de uma Pessoa Jurídica já cadastrada</small>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="areaAtuacao" class="required">Área de Atuação</label>
+                            <input type="text" id="areaAtuacao" name="areaAtuacao" required placeholder="Ex: Tecnologia, Limpeza, Alimentação">
+                        </div>
+                        <div class="form-group">
+                            <label for="ramo" class="required">Ramo</label>
+                            <select id="ramo" name="ramo" required>
+                                <option value="">Selecione...</option>
+                                <option value="Tecnologia">Tecnologia</option>
+                                <option value="Serviços">Serviços</option>
+                                <option value="Materiais">Materiais</option>
+                                <option value="Alimentação">Alimentação</option>
+                                <option value="Equipamentos">Equipamentos</option>
+                                <option value="Manutenção">Manutenção</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="produtosServicos" class="required">Produtos/Serviços</label>
+                        <textarea id="produtosServicos" name="produtosServicos" required placeholder="Descreva os principais produtos ou serviços fornecidos"></textarea>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="representanteLegal" class="required">Representante Legal</label>
+                            <input type="text" id="representanteLegal" name="representanteLegal" required placeholder="Nome do representante">
+                        </div>
+                        <div class="form-group">
+                            <label for="condicoesPagamento" class="required">Condições de Pagamento</label>
+                            <select id="condicoesPagamento" name="condicoesPagamento" required>
+                                <option value="">Selecione...</option>
+                                <option value="À vista">À vista</option>
+                                <option value="30 dias">30 dias</option>
+                                <option value="60 dias">60 dias</option>
+                                <option value="90 dias">90 dias</option>
+                                <option value="Parcelado">Parcelado</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-actions">
+                        <button type="button" class="btn btn-outline" onclick="location.reload()">Limpar</button>
+                        <button type="submit" class="btn btn-primary">Cadastrar Fornecedor</button>
+                    </div>
+                </form>
+            </div>
+        </main>
+
+        <footer class="footer">
+            <p>&copy; 2025 Sistema de Gestão Universitária - Projeto Integrador Grupo 48</p>
+        </footer>
+    </div>
+
+    <script>
+        document.getElementById('cnpj').addEventListener('input', function(e) {
+            let value = e.target.value.replace(/\D/g, '');
+            value = value.replace(/(\d{2})(\d)/, '$1.$2');
+            value = value.replace(/(\d{3})(\d)/, '$1.$2');
+            value = value.replace(/(\d{3})(\d)/, '$1/$2');
+            value = value.replace(/(\d{4})(\d)/, '$1-$2');
+            e.target.value = value;
+        });
+
+        document.getElementById('formCadastroFornecedor').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const ano = new Date().getFullYear();
+            const codigo = 'FORN' + ano + Math.floor(Math.random() * 1000000).toString().padStart(6, '0');
+            document.getElementById('codigo').textContent = codigo;
+            document.getElementById('fornecedorNome').textContent = 'Fornecedor Vinculado';
+            document.getElementById('fornecedorRamo').textContent = document.getElementById('ramo').value;
+            document.getElementById('successMessage').classList.add('show');
+            document.getElementById('formCadastroFornecedor').style.display = 'none';
+        });
+    </script>
+</body>
+</html>
