@@ -12,8 +12,6 @@
 - [Fase 1: Modelagem UML](#fase-1-modelagem-uml)
 - [Fase 2: Prototipação e Implementação](#fase-2-prototipação-e-implementação)
 - [Estrutura do Projeto](#estrutura-do-projeto)
-- [Tecnologias Utilizadas](#tecnologias-utilizadas)
-- [Como Executar](#como-executar)
 - [Funcionalidades](#funcionalidades)
 - [Credenciais de Acesso](#credenciais-de-acesso)
 - [Equipe](#equipe)
@@ -305,33 +303,6 @@ sistema-universitario/
 └── README.md                     # Este arquivo
 ```
 
----
-
-## 🛠️ Tecnologias Utilizadas
-
-### Frontend
-- **HTML5** - Estruturação das páginas
-- **CSS3** - Estilização e layout responsivo
-- **JavaScript** - Interatividade e validações
-  - Validação de CPF/CNPJ
-  - Máscaras de formatação
-  - Sistema de autenticação
-
-### Backend
-- **Java 11+** - Linguagem de programação
-  - Programação Orientada a Objetos
-  - Classes abstratas e herança
-  - Encapsulamento e polimorfismo
-  - Validações de negócio
-
-### Padrões e Conceitos
-- **MVC** (Model-View-Controller)
-- **POO** (Programação Orientada a Objetos)
-- **SOLID** (Princípios de design de software)
-- **UML** (Unified Modeling Language)
-
----
-
 ## ⚙️ Funcionalidades
 
 ### Sistema de Login
@@ -373,7 +344,7 @@ Usuário: adm
 Senha: adm123
 ```
 
-> ⚠️ **Nota**: Em ambiente de produção, as credenciais devem ser armazenadas de forma segura usando hash e salt.
+> ⚠️ **Nota**: Em ambiente de produção, as credenciais devem ser armazenadas de forma segura.
 
 ---
 
@@ -439,7 +410,7 @@ public class Fornecedor extends PessoaJuridica {
 
 ## 👥 Equipe
 
-**Grupo 48 - Projeto Integrador**
+**Grupo 48 - 2ª Entrega do Projeto Integrador - Proposta de Sistema Orientado a Objetos**
 
 - Desenvolvimento do sistema
 - Modelagem UML
