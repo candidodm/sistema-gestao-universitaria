@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro de Pessoa Jurídica - Sistema Universitário</title>
+    <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+    <header class="main-header">
+        <div class="container">
+            <h1>🎓 Sistema de Gestão Universitária</h1>
+            <div class="user-info">
+                <span>Administrador</span>
+                <button onclick="logout()" class="btn-secondary">Sair</button>
+            </div>
+        </div>
+    </header>
+
+    <main class="container">
+        <a href="../index.html" class="btn-secondary btn-back">← Voltar ao Menu</a>
+        
+        <div class="page-header">
+            <h2>🏢 Cadastro de Pessoa Jurídica</h2>
+            <p>Preencha os dados da empresa ou organização que deseja cadastrar</p>
+        </div>
+
+        <div class="form-container">
+            <div id="successMessage" class="success-message"></div>
+            <div id="errorMessage" class="error-message"></div>
+            
+            <form id="formPessoaJuridica">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="cnpj">CNPJ: *</label>
+                        <input type="text" id="cnpj" name="cnpj" required maxlength="18" 
+                               placeholder="00.000.000/0000-00">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="dataAbertura">Data de Abertura:</label>
+                        <input type="date" id="dataAbertura" name="dataAbertura">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="razaoSocial">Razão Social: *</label>
+                    <input type="text" id="razaoSocial" name="razaoSocial" required 
+                           placeholder="Digite a razão social da empresa">
+                </div>
+
+                <div class="form-group">
+                    <label for="nomeFantasia">Nome Fantasia: *</label>
+                    <input type="text" id="nomeFantasia" name="nomeFantasia" required 
+                           placeholder="Digite o nome fantasia">
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="email">E-mail: *</label>
+                        <input type="email" id="email" name="email" required 
+                               placeholder="contato@empresa.com">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="telefone">Telefone: *</label>
+                        <input type="tel" id="telefone" name="telefone" required 
+                               placeholder="(00) 0000-0000">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="inscricaoEstadual">Inscrição Estadual:</label>
+                    <input type="text" id="inscricaoEstadual" name="inscricaoEstadual" 
+                           placeholder="Digite a inscrição estadual">
+                </div>
+
+                <div class="form-group">
+                    <label for="endereco">Endereço: *</label>
+                    <input type="text" id="endereco" name="endereco" required 
+                           placeholder="Rua, número, complemento">
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="cidade">Cidade: *</label>
+                        <input type="text" id="cidade" name="cidade" required 
+                               placeholder="Digite a cidade">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="estado">Estado: *</label>
+                        <select id="estado" name="estado" required>
+                            <option value="">Selecione...</option>
+                            <option value="AC">Acre</option>
+                            <option value="AL">Alagoas</option>
+                            <option value="AP">Amapá</option>
+                            <option value="AM">Amazonas</option>
+                            <option value="BA">Bahia</option>
+                            <option value="CE">Ceará</option>
+                            <option value="DF">Distrito Federal</option>
+                            <option value="ES">Espírito Santo</option>
+                            <option value="GO">Goiás</option>
+                            <option value="MA">Maranhão</option>
+                            <option value="MT">Mato Grosso</option>
+                            <option value="MS">Mato Grosso do Sul</option>
+                            <option value="MG">Minas Gerais</option>
+                            <option value="PA">Pará</option>
+                            <option value="PB">Paraíba</option>
+                            <option value="PR">Paraná</option>
+                            <option value="PE">Pernambuco</option>
+                            <option value="PI">Piauí</option>
+                            <option value="RJ">Rio de Janeiro</option>
+                            <option value="RN">Rio Grande do Norte</option>
+                            <option value="RS">Rio Grande do Sul</option>
+                            <option value="RO">Rondônia</option>
+                            <option value="RR">Roraima</option>
+                            <option value="SC">Santa Catarina</option>
+                            <option value="SP">São Paulo</option>
+                            <option value="SE">Sergipe</option>
+                            <option value="TO">Tocantins</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="cep">CEP: *</label>
+                        <input type="text" id="cep" name="cep" required 
+                               placeholder="00000-000" maxlength="9">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="ramoAtividade">Ramo de Atividade:</label>
+                    <select id="ramoAtividade" name="ramoAtividade">
+                        <option value="">Selecione...</option>
+                        <option value="comercio">Comércio</option>
+                        <option value="industria">Indústria</option>
+                        <option value="servicos">Serviços</option>
+                        <option value="tecnologia">Tecnologia</option>
+                        <option value="educacao">Educação</option>
+                        <option value="saude">Saúde</option>
+                        <option value="construcao">Construção Civil</option>
+                        <option value="agricultura">Agricultura</option>
+                        <option value="outros">Outros</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="observacoes">Observações:</label>
+                    <textarea id="observacoes" name="observacoes" 
+                              placeholder="Informações adicionais sobre a empresa (opcional)"></textarea>
+                </div>
+
+                <button type="submit" class="btn-primary">Cadastrar Pessoa Jurídica</button>
+                <button type="button" class="btn-secondary" onclick="limparFormulario('formPessoaJuridica')">Limpar Campos</button>
+            </form>
+        </div>
+    </main>
+
+    <footer class="main-footer">
+        <p>© 2024 Sistema Universitário - Projeto Integrador Grupo 48</p>
+    </footer>
+
+    <script src="../js/auth.js"></script>
+    <script src="../js/validacoes.js"></script>
+    <script>
+        document.getElementById('formPessoaJuridica').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const cnpj = document.getElementById('cnpj').value;
+            const email = document.getElementById('email').value;
+            
+            // Validar CNPJ
+            if (!validarCNPJ(cnpj)) {
+                mostrarMensagemErro('CNPJ inválido! Por favor, verifique o número digitado.');
+                return;
+            }
+            
+            // Validar Email
+            if (!validarEmail(email)) {
+                mostrarMensagemErro('E-mail inválido! Por favor, verifique o endereço digitado.');
+                return;
+            }
+            
+            // Simular cadastro bem-sucedido
+            mostrarMensagemSucesso('Pessoa Jurídica cadastrada com sucesso!');
+            
+            // Limpar formulário após 2 segundos
+            setTimeout(() => {
+                limparFormulario('formPessoaJuridica');
+            }, 2000);
+        });
+    </script>
+</body>
+</html>

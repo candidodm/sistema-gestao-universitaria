@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema Universitário - Página Principal</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <header class="main-header">
+        <div class="container">
+            <h1>🎓 Sistema de Gestão Universitária</h1>
+            <div class="user-info">
+                <span>Bem-vindo, Administrador</span>
+                <button onclick="logout()" class="btn-secondary">Sair</button>
+            </div>
+        </div>
+    </header>
+
+    <main class="container">
+        <div class="welcome-section">
+            <h2>Bem-vindo ao Sistema de Gestão</h2>
+            <p>Selecione uma das opções abaixo para gerenciar os cadastros:</p>
+        </div>
+
+        <div class="cards-grid">
+            <div class="card">
+                <div class="card-icon">👤</div>
+                <h3>Pessoa Física</h3>
+                <p>Cadastro de pessoas físicas no sistema</p>
+                <a href="pages/pessoa-fisica.html" class="btn-primary">Acessar</a>
+            </div>
+
+            <div class="card">
+                <div class="card-icon">🏢</div>
+                <h3>Pessoa Jurídica</h3>
+                <p>Cadastro de empresas e organizações</p>
+                <a href="pages/pessoa-juridica.html" class="btn-primary">Acessar</a>
+            </div>
+
+            <div class="card">
+                <div class="card-icon">👨‍🏫</div>
+                <h3>Professores</h3>
+                <p>Cadastro de professores da universidade</p>
+                <a href="pages/professor.html" class="btn-primary">Acessar</a>
+            </div>
+
+            <div class="card">
+                <div class="card-icon">📦</div>
+                <h3>Fornecedores</h3>
+                <p>Cadastro de fornecedores de produtos e serviços</p>
+                <a href="pages/fornecedor.html" class="btn-primary">Acessar</a>
+            </div>
+
+            <div class="card">
+                <div class="card-icon">🎓</div>
+                <h3>Alunos</h3>
+                <p>Cadastro de alunos matriculados</p>
+                <a href="pages/aluno.html" class="btn-primary">Acessar</a>
+            </div>
+        </div>
+    </main>
+
+    <footer class="main-footer">
+        <p>© 2024 Sistema Universitário - Projeto Integrador Grupo 48</p>
+    </footer>
+
+    <script src="js/auth.js"></script>
+    <script>
+        // Verificar se está autenticado
+        if (!isAuthenticated()) {
+            window.location.href = 'login.html';
+        }
+    </script>
+</body>
+</html>

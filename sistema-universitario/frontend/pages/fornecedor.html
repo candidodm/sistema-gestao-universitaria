@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro de Fornecedor - Sistema Universitário</title>
+    <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+    <header class="main-header">
+        <div class="container">
+            <h1>🎓 Sistema de Gestão Universitária</h1>
+            <div class="user-info">
+                <span>Administrador</span>
+                <button onclick="logout()" class="btn-secondary">Sair</button>
+            </div>
+        </div>
+    </header>
+
+    <main class="container">
+        <a href="../index.html" class="btn-secondary btn-back">← Voltar ao Menu</a>
+        
+        <div class="page-header">
+            <h2>📦 Cadastro de Fornecedor</h2>
+            <p>Preencha os dados do fornecedor de produtos ou serviços</p>
+        </div>
+
+        <div class="form-container">
+            <div id="successMessage" class="success-message"></div>
+            <div id="errorMessage" class="error-message"></div>
+            
+            <form id="formFornecedor">
+                <h3 style="color: var(--primary-color); margin-bottom: 15px;">Dados da Empresa</h3>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="cnpj">CNPJ: *</label>
+                        <input type="text" id="cnpj" name="cnpj" required maxlength="18" 
+                               placeholder="00.000.000/0000-00">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="dataAbertura">Data de Abertura:</label>
+                        <input type="date" id="dataAbertura" name="dataAbertura">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="razaoSocial">Razão Social: *</label>
+                    <input type="text" id="razaoSocial" name="razaoSocial" required 
+                           placeholder="Digite a razão social">
+                </div>
+
+                <div class="form-group">
+                    <label for="nomeFantasia">Nome Fantasia: *</label>
+                    <input type="text" id="nomeFantasia" name="nomeFantasia" required 
+                           placeholder="Digite o nome fantasia">
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="email">E-mail: *</label>
+                        <input type="email" id="email" name="email" required 
+                               placeholder="contato@fornecedor.com">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="telefone">Telefone: *</label>
+                        <input type="tel" id="telefone" name="telefone" required 
+                               placeholder="(00) 0000-0000">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="inscricaoEstadual">Inscrição Estadual:</label>
+                    <input type="text" id="inscricaoEstadual" name="inscricaoEstadual" 
+                           placeholder="Digite a inscrição estadual">
+                </div>
+
+                <hr style="margin: 30px 0; border: none; border-top: 1px solid var(--border-color);">
+                
+                <h3 style="color: var(--primary-color); margin-bottom: 15px;">Informações de Fornecimento</h3>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="setorAtuacao">Setor de Atuação: *</label>
+                        <select id="setorAtuacao" name="setorAtuacao" required>
+                            <option value="">Selecione...</option>
+                            <option value="tecnologia">Tecnologia e Informática</option>
+                            <option value="mobiliario">Mobiliário e Equipamentos</option>
+                            <option value="material_escritorio">Material de Escritório</option>
+                            <option value="limpeza">Limpeza e Conservação</option>
+                            <option value="alimentacao">Alimentação</option>
+                            <option value="manutencao">Manutenção e Reparos</option>
+                            <option value="seguranca">Segurança</option>
+                            <option value="servicos_gerais">Serviços Gerais</option>
+                            <option value="livros_didaticos">Livros e Material Didático</option>
+                            <option value="laboratorio">Equipamentos de Laboratório</option>
+                            <option value="outros">Outros</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="tipoProdutoServico">Tipo: *</label>
+                        <select id="tipoProdutoServico" name="tipoProdutoServico" required>
+                            <option value="">Selecione...</option>
+                            <option value="produtos">Produtos</option>
+                            <option value="servicos">Serviços</option>
+                            <option value="ambos">Produtos e Serviços</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="produtosServicos">Descrição de Produtos/Serviços: *</label>
+                    <textarea id="produtosServicos" name="produtosServicos" required 
+                              placeholder="Descreva os principais produtos ou serviços oferecidos"></textarea>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="condicoesPagamento">Condições de Pagamento: *</label>
+                        <select id="condicoesPagamento" name="condicoesPagamento" required>
+                            <option value="">Selecione...</option>
+                            <option value="a_vista">À Vista</option>
+                            <option value="7_dias">7 dias</option>
+                            <option value="15_dias">15 dias</option>
+                            <option value="30_dias">30 dias</option>
+                            <option value="45_dias">45 dias</option>
+                            <option value="60_dias">60 dias</option>
+                            <option value="90_dias">90 dias</option>
+                            <option value="parcelado">Parcelado</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="prazoEntrega">Prazo Médio de Entrega (dias):</label>
+                        <input type="number" id="prazoEntrega" name="prazoEntrega" min="0" 
+                               placeholder="Ex: 15">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="contato">Nome do Contato: *</label>
+                    <input type="text" id="contato" name="contato" required 
+                           placeholder="Nome da pessoa de contato">
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="telefoneContato">Telefone do Contato:</label>
+                        <input type="tel" id="telefoneContato" name="telefoneContato" 
+                               placeholder="(00) 00000-0000">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="emailContato">E-mail do Contato:</label>
+                        <input type="email" id="emailContato" name="emailContato" 
+                               placeholder="contato@fornecedor.com">
+                    </div>
+                </div>
+
+                <hr style="margin: 30px 0; border: none; border-top: 1px solid var(--border-color);">
+                
+                <h3 style="color: var(--primary-color); margin-bottom: 15px;">Endereço</h3>
+
+                <div class="form-group">
+                    <label for="endereco">Endereço Completo: *</label>
+                    <input type="text" id="endereco" name="endereco" required 
+                           placeholder="Rua, número, complemento">
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="cidade">Cidade: *</label>
+                        <input type="text" id="cidade" name="cidade" required 
+                               placeholder="Digite a cidade">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="estado">Estado: *</label>
+                        <select id="estado" name="estado" required>
+                            <option value="">Selecione...</option>
+                            <option value="AC">Acre</option>
+                            <option value="AL">Alagoas</option>
+                            <option value="AP">Amapá</option>
+                            <option value="AM">Amazonas</option>
+                            <option value="BA">Bahia</option>
+                            <option value="CE">Ceará</option>
+                            <option value="DF">Distrito Federal</option>
+                            <option value="ES">Espírito Santo</option>
+                            <option value="GO">Goiás</option>
+                            <option value="MA">Maranhão</option>
+                            <option value="MT">Mato Grosso</option>
+                            <option value="MS">Mato Grosso do Sul</option>
+                            <option value="MG">Minas Gerais</option>
+                            <option value="PA">Pará</option>
+                            <option value="PB">Paraíba</option>
+                            <option value="PR">Paraná</option>
+                            <option value="PE">Pernambuco</option>
+                            <option value="PI">Piauí</option>
+                            <option value="RJ">Rio de Janeiro</option>
+                            <option value="RN">Rio Grande do Norte</option>
+                            <option value="RS">Rio Grande do Sul</option>
+                            <option value="RO">Rondônia</option>
+                            <option value="RR">Roraima</option>
+                            <option value="SC">Santa Catarina</option>
+                            <option value="SP">São Paulo</option>
+                            <option value="SE">Sergipe</option>
+                            <option value="TO">Tocantins</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="cep">CEP: *</label>
+                        <input type="text" id="cep" name="cep" required 
+                               placeholder="00000-000" maxlength="9">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="observacoes">Observações:</label>
+                    <textarea id="observacoes" name="observacoes" 
+                              placeholder="Informações adicionais sobre o fornecedor (opcional)"></textarea>
+                </div>
+
+                <button type="submit" class="btn-primary">Cadastrar Fornecedor</button>
+                <button type="button" class="btn-secondary" onclick="limparFormulario('formFornecedor')">Limpar Campos</button>
+            </form>
+        </div>
+    </main>
+
+    <footer class="main-footer">
+        <p>© 2024 Sistema Universitário - Projeto Integrador Grupo 48</p>
+    </footer>
+
+    <script src="../js/auth.js"></script>
+    <script src="../js/validacoes.js"></script>
+    <script>
+        document.getElementById('formFornecedor').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const cnpj = document.getElementById('cnpj').value;
+            const email = document.getElementById('email').value;
+            
+            // Validar CNPJ
+            if (!validarCNPJ(cnpj)) {
+                mostrarMensagemErro('CNPJ inválido! Por favor, verifique o número digitado.');
+                return;
+            }
+            
+            // Validar Email
+            if (!validarEmail(email)) {
+                mostrarMensagemErro('E-mail inválido! Por favor, verifique o endereço digitado.');
+                return;
+            }
+            
+            // Simular cadastro bem-sucedido
+            mostrarMensagemSucesso('Fornecedor cadastrado com sucesso!');
+            
+            // Limpar formulário após 2 segundos
+            setTimeout(() => {
+                limparFormulario('formFornecedor');
+            }, 2000);
+        });
+    </script>
+</body>
+</html>
