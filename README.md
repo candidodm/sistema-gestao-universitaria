@@ -2,7 +2,7 @@
 
 **Projeto Integrador - Desenvolvimento de Sistemas Orientado a Objetos**  
 **Grupo 48**  
-**Senac - 2024**
+**Senac - 2025**
 
 ---
 
