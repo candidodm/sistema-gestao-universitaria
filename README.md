@@ -332,48 +332,6 @@ sistema-universitario/
 
 ---
 
-## 🚀 Como Executar
-
-### Pré-requisitos
-
-- **Navegador web** moderno (Chrome, Firefox, Edge)
-- **JDK 11+** (para executar o backend Java)
-
-### Executando o Frontend
-
-1. Clone ou baixe o repositório
-2. Navegue até a pasta `frontend`
-3. Abra o arquivo `login.html` em um navegador
-
-```bash
-# No terminal
-cd sistema-universitario/frontend
-# Windows
-start login.html
-# Linux/Mac
-xdg-open login.html  # ou open login.html
-```
-
-4. Faça login com as credenciais:
-   - **Usuário**: `adm`
-   - **Senha**: `adm123`
-
-### Compilando e Executando o Backend
-
-```bash
-# Navegue até a pasta backend
-cd sistema-universitario/backend/src
-
-# Compile as classes Java
-javac com/universidade/model/*.java
-javac com/universidade/util/*.java
-
-# Execute uma classe de teste (se disponível)
-java com.universidade.Main
-```
-
----
-
 ## ⚙️ Funcionalidades
 
 ### Sistema de Login
