@@ -479,54 +479,6 @@ public class Fornecedor extends PessoaJuridica {
 }
 ```
 
----
-
-## 🎨 Screenshots do Sistema
-
-### Tela de Login
-![Login](docs/screenshots/login.png)
-
-### Dashboard Principal
-![Dashboard](docs/screenshots/dashboard.png)
-
-### Cadastro de Professor
-![Professor](docs/screenshots/professor.png)
-
-### Cadastro de Aluno
-![Aluno](docs/screenshots/aluno.png)
-
----
-
-## 📝 Notas de Desenvolvimento
-
-### Decisões de Design
-
-1. **Herança vs Composição**: Optamos por herança para representar a relação "é-um" clara entre as entidades (Professor **é uma** PessoaFisica).
-
-2. **Validações no Frontend e Backend**: As validações foram implementadas em ambas as camadas para garantir segurança e melhor experiência do usuário.
-
-3. **Classes Utilitárias**: Criamos classes separadas (ValidadorCPF, ValidadorCNPJ) seguindo o princípio de responsabilidade única.
-
-4. **Enums**: Utilizamos enums para representar valores fixos (Status, Titulação, Turno) garantindo type-safety.
-
-5. **Timestamps**: Todas as entidades possuem dataCadastro e dataAtualizacao para auditoria.
-
-### Melhorias Futuras
-
-- [ ] Integração com banco de dados (MySQL/PostgreSQL)
-- [ ] API REST para comunicação frontend-backend
-- [ ] Sistema de relatórios e dashboards
-- [ ] Gerenciamento de permissões (roles)
-- [ ] Upload de documentos (PDFs, imagens)
-- [ ] Histórico de alterações
-- [ ] Busca e filtros avançados
-- [ ] Exportação de dados (Excel, PDF)
-- [ ] Sistema de notificações
-- [ ] Interface de edição de cadastros
-- [ ] Validação de documentos duplicados
-
----
-
 ## 👥 Equipe
 
 **Grupo 48 - Projeto Integrador**
